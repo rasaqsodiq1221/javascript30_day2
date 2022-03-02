@@ -16,16 +16,16 @@ function setDate() {
   convert the time to degree
    60sec = 360deg,
    Xdeg = (currentsec * 360deg) / 60sec = currentsec * 6,
-   same goes to hour and minute
+   same method goes for hour and minutes
    */
 
   const secondsDegrees = secs * 6;
   secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
 
-  const minsDegrees = mins * 6;
+  const minsDegrees = (mins * 6) + ((secs/60)*6);
   minutesHand.style.transform = `rotate(${minsDegrees}deg)`;
 
-  const hourDegrees = hr * 30;
+  const hourDegrees = (hr * 30) + ((mins/60)*30) ;
   hourHand.style.transform = `rotate(${hourDegrees}deg)`;
 
   if(secondsDegrees === 360) {

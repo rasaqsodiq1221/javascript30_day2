@@ -18,7 +18,6 @@ body {
 .clock {
   border: solid 20px silver;
   border-radius: 50%;
-  /* padding: 1em; */
   width:12rem;
   height: 12rem;
   position: relative;
