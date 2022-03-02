@@ -1,23 +1,44 @@
-const seconds = document.querySelector('.seconds');
-const minutes = document.querySelector('.minutes');
-const hour = document.querySelector('.hour');
+
+const secondsHand = document.querySelector('.secondsHand');
+const minutesHand = document.querySelector('.minutesHand');
+const hourHand = document.querySelector('.hourHand');
+const hands = document.querySelectorAll('.hand');
 
 function setDate() {
-  const now = new Date();
-
+  const now = new Date();  //get current date
+ 
+  //get seconds, minute and hr from current date
   const secs = now.getSeconds();
-  const secondsDegrees = ((secs / 60) * 360) + 90;
-  seconds.style.transform = `rotate(${secondsDegrees}deg)`;
-
   const mins = now.getMinutes();
-  const minsDegrees = ((mins / 60) * 360) + ((secs/60)*6) + 90;
-  minutes.style.transform = `rotate(${minsDegrees}deg)`;
-
   const hr = now.getHours();
-  const hourDegrees = ((hr / 12) * 360) + ((mins/60)*30) + 90;
-  hour.style.transform = `rotate(${hourDegrees}deg)`;
+
+  /*
+  convert the time to degree
+   60sec = 360deg,
+   Xdeg = (currentsec * 360deg) / 60sec = currentsec * 6,
+   same goes to hour and minute
+   */
+
+  const secondsDegrees = secs * 6;
+  secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+  const minsDegrees = mins * 6;
+  minutesHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+  const hourDegrees = hr * 30;
+  hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+
+  if(secondsDegrees === 360) {
+    hands.forEach(hand => hand.style.transition = 'none');
+  } else if (secondsDegrees === 0) {
+  hands.forEach(hand => hand.style.transition = 'none')}
+  else {
+    hands.forEach(hand => hand.style.transition = '')
+  }
+  
+
 }
 
 setInterval(setDate, 1000);
 
-setDate();
+setDate(); 

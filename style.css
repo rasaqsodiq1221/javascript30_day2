@@ -33,19 +33,36 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 7%;
+  padding: 6%;
 }
 
 .hand {
-  width: 43%;
-  border: solid 2px silver;
   position: absolute;
-  top: 50%;
-  transform: rotate(90deg);
-  transform-origin: 100%;
+  left: 50%;
+  bottom: 50%;
+  height: 44%;
+  transform-origin: 50% 100%;
   transition: all 0.05s;
   transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
 }
+
+.hand::before {
+  content: '';
+  display: block;
+  position: relative;
+  border-radius: 42.5%;
+  border: 3px solid silver;
+  height: 100%;
+}
+
+.hourHand {
+  height: 37.5%;
+}
+
+.secondsHand::before {
+  border: 2px solid goldenrod;
+}
+
 
 @media (min-width: 900px) {
   .clock {
